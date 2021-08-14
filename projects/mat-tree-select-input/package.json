@@ -1,0 +1,17 @@
+{
+  "name": "mat-tree-select-input",
+  "version": "0.0.1",
+  "description": "A textfield that allows user to select option from a tree data structure.",
+  "keywords": ["Angular tree text field", "Angular Material tree text field","Material Tree Select", "Angular material tree input"],
+  "author": "Salim Zakari",
+  "homepage": "https://github.com/muhdszakari6/mat-tree-select-input.git",
+  "peerDependencies": {
+    "@angular/common": "^12.1.0",
+    "@angular/core": "^12.1.0",
+    "@angular/material": "^12.2.1"
+
+  },
+  "dependencies": {
+    "tslib": "^2.2.0"
+  }
+}

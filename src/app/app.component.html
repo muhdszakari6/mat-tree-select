@@ -1,0 +1,58 @@
+
+<div class="root">
+
+  <mat-card class="card">
+  
+  
+  <form (ngSubmit)="onSubmit(testForm)" #testForm="ngForm" [formGroup] = "form" >
+      <div class="">
+          <label for="firstname">First name</label>
+          <mat-form-field appearance="outline"  class="full-width">
+              <input matInput type="text" name="firstname"
+              formControlName="firstname">
+            </mat-form-field>
+      </div>
+  
+   
+      <div class="">
+          <label for="email">Email</label>
+          <mat-form-field appearance="outline"  class="full-width">
+              <input matInput type="text" name="email"
+              formControlName="email">
+            </mat-form-field>
+      </div>
+
+  
+      
+      <div class="">
+          <label for="customSelect" > Custom Select</label>
+          <div class="">
+              <ngx-mat-tree-select-input [options] = "tree_options" [placeholder] = "'Custom Select'" [controlName] = "'customTreeSelect'" >
+  
+              </ngx-mat-tree-select-input>
+          </div>
+        
+          
+      </div>
+  
+      <button type = "submit" color = "primary" mat-flat-button>Save</button>
+      
+        
+  </form>
+  
+  <div class="">
+      <label for="customSelect" > Custom Select</label>
+      <div class="">
+          <ngx-mat-tree-select-input-ngmodel (selectionChanged) = "log()" [options] = "tree_options" [placeholder] = "'Custom Select'"  [(select)]="tree_select_value">
+  
+          </ngx-mat-tree-select-input-ngmodel>
+      </div>
+      
+      <button (click)="log()" color = "primary" mat-flat-button>Save</button>
+    
+      
+  </div>
+  
+  </mat-card>
+  </div>
+  
