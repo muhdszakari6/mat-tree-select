@@ -162,7 +162,7 @@ Hence, a sample option will be
   ```
 Finnaly pass it to any one of the examples(code snippet) above
 
-In cases where your data is not exactly the type of Treedata, below is a sample method you can use to convert it to a TreeData.
+In cases where your data is not exactly the type of Treedata[], below is a sample method you can use to convert it to a TreeData[].
 You can modify this method to best suit your use case.
 ```typescript
 
