@@ -1,58 +1,131 @@
-
 <div class="root">
 
   <mat-card class="card">
-  
-  
-  <form (ngSubmit)="onSubmit(testForm)" #testForm="ngForm" [formGroup] = "form" >
-      <div class="">
-          <label for="firstname">First name</label>
-          <mat-form-field appearance="outline"  class="full-width">
-              <input matInput type="text" name="firstname"
-              formControlName="firstname">
-            </mat-form-field>
-      </div>
-  
-   
-      <div class="">
-          <label for="email">Email</label>
-          <mat-form-field appearance="outline"  class="full-width">
-              <input matInput type="text" name="email"
-              formControlName="email">
-            </mat-form-field>
+
+    <h1>
+      MAT TREE SELECT INPUT
+    </h1>
+    <div>
+
+      <div class="form">
+
+        <form (ngSubmit)="onSubmit(testForm)" #testForm="ngForm" [formGroup]="form">
+          <div>
+            <label for="treedata">Enter your treedata in JSON.</label>
+            <div class="section" style="display: flex; flex-direction: column;">
+              <mat-form-field appearance="outline">
+                <textarea rows="10" cols="90" placeholder="Enter your treedata in JSON." matInput
+                  formControlName="treedata"></textarea>
+              </mat-form-field>
+              <button style="margin-left: auto;" type="button" [disabled]="!showTreeSelect" (click)="generate()"
+                color="primary" mat-flat-button>
+                <span *ngIf="showTreeSelect">Generate tree input</span>
+                <span *ngIf="!showTreeSelect">Generating</span>
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <div *ngIf="showTreeSelect" class="section">
+            <div class="flex">
+
+              <div class="">
+                <label for="customSelect"> mat-tree-select-input with form control</label>
+                <div class="">
+                  <ngx-mat-tree-select-input [options]="tree_options" [placeholder]="' Select Category'"
+                    [controlName]="'customTreeSelect'">
+
+                  </ngx-mat-tree-select-input>
+                </div>
+                <button type="submit" color="primary" mat-flat-button>Submit</button>
+              </div>
+
+              <div class="section">
+                <h2>Mat Tree Select Value With Form Control</h2>
+                <label for="">Value:</label>
+                <p>
+                  {{firstResult}}
+                </p>
+              </div>
+
+            </div>
+
+          </div>
+
+
+
+
+        </form>
+
+        <div *ngIf="showTreeSelect" class="section">
+          <div class="flex">
+            <div class="">
+
+
+              <label for="customSelect"> mat-tree-select-input with ng model</label>
+              <div class="">
+                <ngx-mat-tree-select-input-ngmodel (selectionChanged)="third()" [options]="tree_options"
+                  [placeholder]="'Custom Select'" [(select)]="tree_select_value">
+
+                </ngx-mat-tree-select-input-ngmodel>
+              </div>
+
+              <button (click)="log()" color="primary" mat-flat-button>Submit</button>
+
+            </div>
+            <div class="section">
+              <h2>Mat Tree Select Value With NG Model</h2>
+              <label for="">Value:</label>
+              <p>
+                {{secondResult}}
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+
       </div>
 
-  
-      
-      <div class="">
-          <label for="customSelect" > Custom Select</label>
+      <div *ngIf="showTreeSelect" class="section">
+
+
+        <div class="flex">
           <div class="">
-              <ngx-mat-tree-select-input [options] = "tree_options" [placeholder] = "'Custom Select'" [controlName] = "'customTreeSelect'" >
-  
-              </ngx-mat-tree-select-input>
+
+
+            <label for="customSelect"> mat-tree-select-input with ng model</label>
+            <div class="">
+              <ngx-mat-tree-select-input-ngmodel (selectionChanged)="third()" [options]="tree_options"
+                [placeholder]="'Custom Select'" [(select)]="tree_select_value2">
+
+              </ngx-mat-tree-select-input-ngmodel>
+            </div>
+
+
           </div>
-        
-          
+
+          <div class="section">
+            <h2>Mat Tree Select Value With NG Model on (selectionChanged) </h2>
+            <label for="">Value:</label>
+            <p>
+              {{thirdResult}}
+            </p>
+          </div>
+
+
+        </div>
       </div>
-  
-      <button type = "submit" color = "primary" mat-flat-button>Save</button>
-      
-        
-  </form>
-  
-  <div class="">
-      <label for="customSelect" > Custom Select</label>
-      <div class="">
-          <ngx-mat-tree-select-input-ngmodel (selectionChanged) = "log()" [options] = "tree_options" [placeholder] = "'Custom Select'"  [(select)]="tree_select_value">
-  
-          </ngx-mat-tree-select-input-ngmodel>
-      </div>
-      
-      <button (click)="log()" color = "primary" mat-flat-button>Save</button>
-    
-      
-  </div>
-  
+
+
+
+
+
+    </div>
+
+
   </mat-card>
-  </div>
-  
+</div>

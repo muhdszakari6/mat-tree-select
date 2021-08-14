@@ -10,6 +10,12 @@ import { TreeData } from 'mat-tree-select-input';
 export class AppComponent {
   category = ""
   form: FormGroup;
+  showTreeSelect: boolean = true
+  firstResult = ''
+  secondResult = ''
+  thirdResult = ''
+
+
   feild = {
     type: 'text',
     name: 'custom',
@@ -34,16 +40,16 @@ export class AppComponent {
   ]
   tree_options: TreeData[] = [
     {
-      name: 'Parent',
-      value: 'Parent',
+      name: 'Electronics',
+      value: 'Electronics',
       children: [
         {
-          name: 'Child',
-          value: 'Child',
+          name: 'Phones',
+          value: 'Phones',
           children: [
             {
-              name: 'Child',
-              value: 'Child', 
+              name: 'Iphones',
+              value: 'Iphones', 
               children: []
               
             } 
@@ -53,16 +59,23 @@ export class AppComponent {
     },
    
     {
-      name: 'Parent',
-      value: 'Parent',
+      name: 'Web Development',
+      value: 'Web Development',
       children: [
         {
-          name: 'Child',
-          value: 'Child',
+          name: 'Frontend Development',
+          value: 'Frontend Development',
           children: [
             {
-              name: 'Child',
-              value: 'Child',
+              name: 'Angular',
+              value: 'Angular',
+              children: []
+
+              
+            },
+            {
+              name: 'React',
+              value: 'React',
               children: []
 
               
@@ -76,14 +89,15 @@ export class AppComponent {
   ]
 
   tree_select_value = ""
+  tree_select_value2 = ""
+
 
   constructor(
     private fb: FormBuilder
   ) { 
     this.form = this.fb.group({
-      firstname: ['', [Validators.required]],
+      treedata: [JSON.stringify(this.tree_options), [Validators.required]],
 
-      email: ['', [Validators.required, Validators.email]],
       customSelect:  ['', [Validators.required]],
       customTreeSelect:  ['', [Validators.required]],
 
@@ -93,12 +107,26 @@ export class AppComponent {
 
   }
 
+  generate(){
+    this.showTreeSelect = false;
+    setTimeout(() => {
+      this.showTreeSelect = true;
+    }, 1000);
+    this.tree_options = JSON.parse(this.form.value.treedata)
+    
+  }
+
   ngOnInit(): void {
   }
 
   log(){
-    console.log(this.tree_select_value)
+    this.secondResult = JSON.stringify(this.tree_select_value)
+  }
+  third(){
+    this.thirdResult = JSON.stringify(this.tree_select_value2)
+
   }
   onSubmit(form: any){
-    console.log(form.value)
+    this.firstResult = JSON.stringify(form.value.customTreeSelect)
   }}
+

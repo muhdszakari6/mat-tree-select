@@ -1,0 +1,30 @@
+.form{
+}
+.result{
+}
+
+.flex{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+    gap: 20px;
+}
+.section{
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding: 10px
+}
+
+mat-form-field{
+    width: 100%;
+}
+p{
+    margin-bottom: 0;
+}
+
+.card{
+    @media (max-width: 600px){
+
+        width: 100%;
+
+    }
+}
