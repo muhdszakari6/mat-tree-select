@@ -1,7 +1,7 @@
 <div class="root">
 
   <mat-card class="card">
-    
+
 
     <h1>
       MAT TREE SELECT INPUT
@@ -12,7 +12,7 @@
 
         <form (ngSubmit)="onSubmit(testForm)" #testForm="ngForm" [formGroup]="form">
           <div>
-            <label for="treedata">Enter your treedata in JSON.</label>
+            <label for="treedata">Enter your array of type TreeData[] in JSON. For example:</label>
             <div class="section" style="display: flex; flex-direction: column;">
               <mat-form-field appearance="outline">
                 <textarea rows="10" cols="90" placeholder="Enter your treedata in JSON." matInput

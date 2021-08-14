@@ -4,6 +4,7 @@
   "description": "A textfield that allows user to select option from a tree data structure.",
   "keywords": ["Angular tree text field", "Angular Material tree text field","Material Tree Select", "Angular material tree input"],
   "author": "Salim Zakari",
+  "homepage": "https://mat-tree-select-input-demo.netlify.app/",
 
   "peerDependencies": {
     "@angular/common": "^12.1.0",
