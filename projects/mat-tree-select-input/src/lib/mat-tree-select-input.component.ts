@@ -18,7 +18,7 @@ export interface TreeData {
   template: `
    
    <mat-form-field appearance="outline">
-        <mat-select [id]="controlName"  [placeholder]="placeholder" [formControlName]="controlName">
+        <mat-select [id]="controlName"  [placeholder]="placeholder" [multiple] = "multiple" [formControlName]="controlName">
             <mat-tree class="example-tree mat-tree-position" [dataSource]="nestedDataSource" [treeControl]="nestedTreeControl">
                 <!-- This is the tree node template for leaf nodes -->
                 <mat-tree-node  class="mat-tree-node"  *matTreeNodeDef="let node" >
@@ -150,6 +150,7 @@ export class MatTreeSelectInputComponent implements OnInit {
   @Input() controlName: any = {};
   @Input() options: TreeData[]  = []
   @Input() placeholder = ''
+  @Input() multiple = false
 
 
   nestedTreeControl: NestedTreeControl<TreeData>;

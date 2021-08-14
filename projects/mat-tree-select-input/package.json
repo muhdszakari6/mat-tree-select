@@ -1,16 +1,22 @@
 {
   "name": "mat-tree-select-input",
-  "version": "0.0.3",
-  "description": "A textfield that allows user to select option from a tree data structure.",
-  "keywords": ["Angular tree text field", "Angular Material tree text field","Material Tree Select", "Angular material tree input"],
+  "version": "1.0.1",
+  "description": "An angular material select formfield that allows user to select option from a tree data structure.",
+  "keywords": [
+    "Angular tree text field",
+    "Angular Material tree text field",
+    "Material Tree Select",
+    "Angular material tree input",
+    "Angular tree form field",
+    "mat-tree-select-input",
+    "mat-tree-select-field"
+  ],
   "author": "Salim Zakari",
   "homepage": "https://mat-tree-select-input-demo.netlify.app/",
-
   "peerDependencies": {
     "@angular/common": "^12.1.0",
     "@angular/core": "^12.1.0",
     "@angular/material": "^12.2.1"
-
   },
   "dependencies": {
     "tslib": "^2.2.0"

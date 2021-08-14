@@ -18,6 +18,7 @@ export class MatTreeSelectInputNgmodelComponent implements OnInit {
   @Output() selectionChanged = new EventEmitter<string>();
   @Input() options: TreeData[] = []
   @Input() placeholder = ''
+  @Input() multiple = false
 
 
   nestedTreeControl: NestedTreeControl<TreeData>;

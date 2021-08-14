@@ -1,24 +1,163 @@
 # MatTreeSelectInput
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.0.
+An angular material select formfield that allows user to select option from a tree data structure.
 
-## Code scaffolding
+## Dependencies
+*  [Angular](https://angular.io/)
+* [Angular material](https://material.angular.io/)
 
-Run `ng generate component component-name --project mat-tree-select-input` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project mat-tree-select-input`.
-> Note: Don't forget to add `--project mat-tree-select-input` or else it will be added to the default project in your `angular.json` file. 
 
-## Build
+## Features
+* Select single tree option
+* Select multiple tree option 
+* Unlimited tree level 
+* Collapsable trees
 
-Run `ng build mat-tree-select-input` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Demo
+ [Demo Application](https://mat-tree-select-input-demo.netlify.app/)
 
-## Publishing
+## Installation
+After intalling the above dependencies. Install mat-tree-select-input via.
+```bash 
+npm i mat-tree-select-input
+```
 
-After building your library with `ng build mat-tree-select-input`, go to the dist folder `cd dist/mat-tree-select-input` and run `npm publish`.
+Once installed you need to import our main module in your application module:
+```javascript 
+import { MatTreeSelectInputModule } from 'mat-tree-select-input';
+ 
 
-## Running unit tests
+@NgModule({
+  declarations: [AppComponent, ...],
+  imports: [MatTreeSelectInputModule, ...],
+  bootstrap: [AppComponent]
+})
+export class AppModule {
+}
 
-Run `ng test mat-tree-select-input` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```
 
-## Further help
+## Usage
+mat-tree-select-input with form control: Pass in formControlName to controlName input. 
+```html 
+        <form  [formGroup]="form">
+            ....
+            <ngx-mat-tree-select-input 
+                    [options]="options"
+                    [placeholder]="'Select Category'" 
+                    [controlName]="'category'">
+            </ngx-mat-tree-select-input>
+            ....
+        </form>
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+mat-tree-select-input (multiple) with form control.
+```html 
+        <form  [formGroup]="form">
+            ....
+            <ngx-mat-tree-select-input 
+                    [multiple]= "true"
+                    [options]="options"
+                    [placeholder]="'Select Category'" 
+                    [controlName]="'category'">
+            </ngx-mat-tree-select-input>
+            ....
+        </form>
+```
+
+mat-tree-select-input with NgModel.
+```html 
+            ....
+            <ngx-mat-tree-select-input-ngmodel 
+                    (selectionChanged)="onSelectionChanged()"
+                    [(select)]="value"
+                    [options]="options"
+                    [placeholder]="'Select Category'" 
+                    >
+            </ngx-mat-tree-select-input-ngmodel>
+            ....
+```
+mat-tree-select-input with NgModel(multiple).
+
+```html 
+            ....
+            <ngx-mat-tree-select-input-ngmodel 
+                    (selectionChanged)="onSelectionChanged()"
+                    [(select)]="value"
+                    [multiple]= "true"
+                    [options]="options"
+                    [placeholder]="'Select Category'" 
+                    >
+            </ngx-mat-tree-select-input-ngmodel>
+            ....
+```
+
+Creating options to pass into the component. 
+In your component import TreeData from mat-tree-select-input via 
+```javascript
+import { TreeData } from 'mat-tree-select-input';
+```
+Declare options property to be of type TreeData[], sample:
+```typescript
+options: TreeData[] = []
+```
+TreeData is an interface exported from mat-tree-select-input, below is the definition of the interface
+```typescript 
+interface TreeData {
+            name: string
+            value: string
+            children: TreeData[]
+        }
+```
+Hence, a sample option will be 
+```typescript 
+
+ options: TreeData[] = [
+    {
+      name: 'Electronics',
+      value: 'Electronics',
+      children: [
+        {
+          name: 'Phones',
+          value: 'Phones',
+          children: [
+            {
+              name: 'Iphones',
+              value: 'Iphones', 
+              children: []
+              
+            } 
+          ]
+        }
+      ]
+    },
+   
+    {
+      name: 'Web Development',
+      value: 'Web Development',
+      children: [
+        {
+          name: 'Frontend Development',
+          value: 'Frontend Development',
+          children: [
+            {
+              name: 'Angular',
+              value: 'Angular',
+              children: []
+
+              
+            },
+            {
+              name: 'React',
+              value: 'React',
+              children: []
+
+              
+            }
+          ]
+        }
+      ]
+    },
+  ]
+  ```
+Finnaly pass it to any one of the examples(code snippet) above

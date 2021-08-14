@@ -12,9 +12,12 @@ export class AppComponent {
   form: FormGroup;
   showTreeSelect: boolean = true
   firstResult = ''
+  firstResultMultiple = ''
   secondResult = ''
+  secondResultMultiple = ''
   thirdResult = ''
-
+  thirdResultMultiple = ''
+  
 
   feild = {
     type: 'text',
@@ -90,6 +93,9 @@ export class AppComponent {
 
   tree_select_value = ""
   tree_select_value2 = ""
+  tree_select_value_multiple: any;
+  tree_select_value2_multiple: any;
+
 
 
   constructor(
@@ -100,6 +106,8 @@ export class AppComponent {
 
       customSelect:  ['', [Validators.required]],
       customTreeSelect:  ['', [Validators.required]],
+      customTreeSelectMultiple:  ['', [Validators.required]],
+
 
 
 
@@ -121,12 +129,15 @@ export class AppComponent {
 
   log(){
     this.secondResult = JSON.stringify(this.tree_select_value)
+    this.secondResultMultiple =  JSON.stringify(this.tree_select_value_multiple)
   }
   third(){
     this.thirdResult = JSON.stringify(this.tree_select_value2)
+    this.thirdResultMultiple = JSON.stringify(this.tree_select_value2_multiple)
 
   }
   onSubmit(form: any){
     this.firstResult = JSON.stringify(form.value.customTreeSelect)
+    this.firstResultMultiple = JSON.stringify(form.value.customTreeSelectMultiple)
   }}
 

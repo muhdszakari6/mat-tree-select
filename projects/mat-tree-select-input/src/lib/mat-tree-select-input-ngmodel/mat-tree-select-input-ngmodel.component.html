@@ -1,6 +1,6 @@
 
     <mat-form-field  appearance="outline">
-        <mat-select  [placeholder]="placeholder" (selectionChange)= 'selectionChanged.emit(select)' [(ngModel)]="select" (ngModelChange) ="selectChange.emit(select)" >
+        <mat-select  [placeholder]="placeholder" [multiple] = "multiple" (selectionChange)= 'selectionChanged.emit(select)' [(ngModel)]="select" (ngModelChange) ="selectChange.emit(select)" >
             <mat-tree class="example-tree mat-tree-position" [dataSource]="nestedDataSource" [treeControl]="nestedTreeControl">
                 <!-- This is the tree node template for leaf nodes -->
                 <mat-tree-node  class="mat-tree-node"  *matTreeNodeDef="let node" >
