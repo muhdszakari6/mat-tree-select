@@ -17,7 +17,7 @@ An angular material select formfield that allows user to select option from a tr
  [Demo Application](https://mat-tree-select-input-demo.netlify.app/)
 
 ## Installation
-After intalling the above dependencies. Install mat-tree-select-input via.
+After installing the above dependencies. Install mat-tree-select-input via.
 ```bash 
 npm i mat-tree-select-input
 ```
