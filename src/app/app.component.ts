@@ -238,7 +238,7 @@ export class AppComponent {
     const getNodes = (result:any, object:any) => {
 
    
-      if ( object.name.toLowerCase().startsWith(text)) {
+      if ( object.name.toLowerCase().startsWith(text.toLowerCase())) {
 
           result.push(object);
           return result;

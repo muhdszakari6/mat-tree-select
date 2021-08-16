@@ -207,11 +207,8 @@ And then, implement the filter method. for example:
 ```typescript
   filter(array: TreeData[], text: string) {
 
-    const getNodes = (result, object) => {
-
-   
+    const getNodes = (result, object) => {   
       if ( object.name.toLowerCase().startsWith(text)) {
-
           result.push(object);
           return result;
       }
@@ -222,7 +219,7 @@ And then, implement the filter method. for example:
       return result;
     };
 
-    this.tree_options = array.reduce(getNodes, []);
+    this.options = array.reduce(getNodes, []);
   }
 
 ```
