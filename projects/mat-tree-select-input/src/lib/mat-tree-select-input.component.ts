@@ -1,4 +1,5 @@
 import { NestedTreeControl } from '@angular/cdk/tree';
+import { OnChanges } from '@angular/core';
 import { Component, Input, OnInit } from '@angular/core';
 import { ControlContainer, FormGroupDirective } from '@angular/forms';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
@@ -19,6 +20,8 @@ export interface TreeData {
    
    <mat-form-field appearance="outline">
         <mat-select [id]="controlName"  [placeholder]="placeholder" [multiple] = "multiple" [formControlName]="controlName">
+            <ng-content></ng-content>
+
             <mat-tree class="example-tree mat-tree-position" [dataSource]="nestedDataSource" [treeControl]="nestedTreeControl">
                 <!-- This is the tree node template for leaf nodes -->
                 <mat-tree-node  class="mat-tree-node"  *matTreeNodeDef="let node" >
@@ -45,7 +48,8 @@ export interface TreeData {
                     </div>
 
                     <ul [class.example-tree-invisible]="!nestedTreeControl.isExpanded(node)">
-                      <p class="title">Children of {{node.name}}</p>
+                      <p *ngIf="heading !== ''" class="title"> {{heading + " " + node.name}}</p>
+
                       <ng-container matTreeNodeOutlet></ng-container>
                     </ul>
           
@@ -145,19 +149,20 @@ mat-tree-node::after {
     }
   ]
 })
-export class MatTreeSelectInputComponent implements OnInit {
+export class MatTreeSelectInputComponent implements OnInit, OnChanges {
 
   @Input() controlName: any = {};
-  @Input() options: TreeData[]  = []
+  @Input() options: TreeData[] = []
   @Input() placeholder = ''
   @Input() multiple = false
+  @Input() heading = ""
 
 
   nestedTreeControl: NestedTreeControl<TreeData>;
   nestedDataSource: MatTreeNestedDataSource<TreeData>;
 
-  constructor() { 
-    
+  constructor() {
+
     this.nestedTreeControl = new NestedTreeControl<TreeData>(this._getChildren);
 
     this.nestedDataSource = new MatTreeNestedDataSource();
@@ -166,7 +171,18 @@ export class MatTreeSelectInputComponent implements OnInit {
   ngOnInit(): void {
 
     this.nestedDataSource.data = this.options
+
   }
+
+  ngOnChanges(changes: any): void {
+
+    if (changes.options.currentValue !== changes.options.previousValue) {
+      this.nestedDataSource.data = this.options
+    }
+
+  }
+
+
   private _getChildren = (node: TreeData) => observableOf(node.children);
 
   hasNestedChild = (_: number, nodeData: TreeData) => {

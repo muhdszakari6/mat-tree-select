@@ -45,6 +45,7 @@ mat-tree-select-input with form control: Pass in formControlName to controlName 
             <ngx-mat-tree-select-input 
                     [options]="options"
                     [placeholder]="'Select Category'" 
+                    [heading] = "'Children of'"
                     [controlName]="'category'">
             </ngx-mat-tree-select-input>
             ....
@@ -58,6 +59,7 @@ mat-tree-select-input (multiple) with form control.
             <ngx-mat-tree-select-input 
                     [multiple]= "true"
                     [options]="options"
+                    [heading] = "'Children of'"
                     [placeholder]="'Select Category'" 
                     [controlName]="'category'">
             </ngx-mat-tree-select-input>
@@ -72,6 +74,7 @@ mat-tree-select-input with NgModel.
                     (selectionChanged)="onSelectionChanged()"
                     [(select)]="value"
                     [options]="options"
+                    [heading] = "'Sub Categories of'"
                     [placeholder]="'Select Category'" 
                     >
             </ngx-mat-tree-select-input-ngmodel>
@@ -86,6 +89,7 @@ mat-tree-select-input with NgModel(multiple).
                     [(select)]="value"
                     [multiple]= "true"
                     [options]="options"
+                    [heading] = "'Sub Categories of'"
                     [placeholder]="'Select Category'" 
                     >
             </ngx-mat-tree-select-input-ngmodel>
@@ -179,4 +183,46 @@ You can modify this method to best suit your use case.
     )
   }
 
-  ```
+```
+To implement filter for our mat-tree-select-input you can project an input into the component
+```html
+
+                  <ngx-mat-tree-select-input [options]="options" [placeholder]="' Select Category'"
+                    [controlName]="'customTreeSelect'">
+                    <div class="global_search"
+                      >
+
+                      <input #searchInput placeholder="Search" 
+                        (keydown)="$event.stopPropagation()"
+                        (keyup)="filter(original_options,searchInput.value)">
+
+                    </div>
+
+                  </ngx-mat-tree-select-input>
+
+```
+
+And then, implement the filter method. for example:
+```typescript
+  filter(array: TreeData[], text: string) {
+
+    const getNodes = (result, object) => {
+
+   
+      if ( object.name.toLowerCase().startsWith(text)) {
+        console.log(text)
+
+          result.push(object);
+          return result;
+      }
+      if (Array.isArray(object.children)) {
+        const children = object.children.reduce(getNodes, []);
+        if (children.length) result.push({ ...object, children });
+      }
+      return result;
+    };
+
+    this.tree_options = array.reduce(getNodes, []);
+  }
+
+```

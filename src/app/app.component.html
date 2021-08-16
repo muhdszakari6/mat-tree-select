@@ -7,9 +7,9 @@
       MAT TREE SELECT INPUT
     </h1>
     <div style="margin-bottom: 20px" class="">
-      <a  href="https://www.npmjs.com/package/mat-tree-select-input" target = "_blank">
+      <a href="https://www.npmjs.com/package/mat-tree-select-input" target="_blank">
         Please Click on this link to read the documentation first!!! Thank you.
-    </a>
+      </a>
     </div>
 
     <div>
@@ -41,11 +41,37 @@
               <div class="">
                 <label for="customSelect"> mat-tree-select-input with form control</label>
                 <div class="">
-                  <ngx-mat-tree-select-input [options]="tree_options"
-                    [placeholder]="' Select Category'" [controlName]="'customTreeSelect'">
+
+
+                  <ngx-mat-tree-select-input [options]="tree_options" [placeholder]="' Select Category'"
+                    [controlName]="'customTreeSelect'">
+                    <div class="global_search"
+                      style="display: flex; align-items: center; justify-content: space-between; ">
+                      <input placeholder="Search" class="selection-search" (keydown)="$event.stopPropagation()">
+                      <button mat-icon-button matSuffix>
+                        <mat-icon style="font-size: 20px; color: red;">close</mat-icon>
+                      </button>
+                    </div>
 
                   </ngx-mat-tree-select-input>
                 </div>
+                <label for="customSelect"> mat-tree-select-input with form control and filter</label>
+                <div class="">
+
+
+                  <ngx-mat-tree-select-input [options]="tree_options" [placeholder]="' Select Category'"
+                    [controlName]="'customTreeSelect'">
+                    <div class="global_search"
+                      style="display: flex; align-items: center; justify-content: space-between; ">
+                      <input #searchBrandList placeholder="Search" class="selection-search"
+                        (keydown)="$event.stopPropagation()"
+                        (keyup)="filter(original_tree_options,searchBrandList.value)">
+
+                    </div>
+
+                  </ngx-mat-tree-select-input>
+                </div>
+
                 <button type="submit" color="primary" mat-flat-button>Submit</button>
               </div>
 
@@ -61,7 +87,7 @@
 
           </div>
 
-          
+
           <div *ngIf="showTreeSelect" class="section">
             <div class="flex">
 
@@ -104,8 +130,8 @@
 
               <label for="customSelect"> mat-tree-select-input with ng model</label>
               <div class="">
-                <ngx-mat-tree-select-input-ngmodel  (selectionChanged)="third()"
-                  [options]="tree_options" [placeholder]="'Custom Select'" [(select)]="tree_select_value">
+                <ngx-mat-tree-select-input-ngmodel (selectionChanged)="third()" [options]="tree_options"
+                  [placeholder]="'Custom Select'" [(select)]="tree_select_value">
 
                 </ngx-mat-tree-select-input-ngmodel>
               </div>
@@ -124,7 +150,7 @@
           </div>
 
         </div>
-        
+
         <div *ngIf="showTreeSelect" class="section">
           <div class="flex">
             <div class="">
@@ -132,7 +158,7 @@
 
               <label for="customSelect"> mat-tree-select-input(multiple) with ng model</label>
               <div class="">
-                <ngx-mat-tree-select-input-ngmodel [multiple] = "true"  (selectionChanged)="third()"
+                <ngx-mat-tree-select-input-ngmodel [multiple]="true" (selectionChanged)="third()"
                   [options]="tree_options" [placeholder]="'Custom Select'" [(select)]="tree_select_value_multiple">
 
                 </ngx-mat-tree-select-input-ngmodel>
@@ -166,8 +192,8 @@
             <label for="customSelect"> mat-tree-select-input with ng model</label>
 
             <div class="">
-              <ngx-mat-tree-select-input-ngmodel (selectionChanged)="third()"
-                [options]="tree_options" [placeholder]="'Custom Select'" [(select)]="tree_select_value2">
+              <ngx-mat-tree-select-input-ngmodel (selectionChanged)="third()" [options]="tree_options"
+                [placeholder]="'Custom Select'" [(select)]="tree_select_value2">
 
               </ngx-mat-tree-select-input-ngmodel>
             </div>
@@ -187,7 +213,7 @@
         </div>
       </div>
 
-      
+
       <div *ngIf="showTreeSelect" class="section">
 
 
@@ -198,8 +224,8 @@
             <label for="customSelect"> mat-tree-select-input with ng model</label>
 
             <div class="">
-              <ngx-mat-tree-select-input-ngmodel [multiple] = "true" (selectionChanged)="third()"
-                [options]="tree_options" [placeholder]="'Custom Select'" [(select)]="tree_select_value2_multiple">
+              <ngx-mat-tree-select-input-ngmodel [multiple]="true" (selectionChanged)="third()" [options]="tree_options"
+                [placeholder]="'Custom Select'" [(select)]="tree_select_value2_multiple">
 
               </ngx-mat-tree-select-input-ngmodel>
             </div>

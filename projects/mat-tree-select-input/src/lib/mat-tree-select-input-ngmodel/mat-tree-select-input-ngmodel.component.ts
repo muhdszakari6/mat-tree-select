@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { ControlContainer, FormGroupDirective } from '@angular/forms';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
 import { NestedTreeControl } from '@angular/cdk/tree';
@@ -10,7 +10,7 @@ import { TreeData } from '../mat-tree-select-input.component';
   templateUrl: './mat-tree-select-input-ngmodel.component.html',
   styleUrls: ['./mat-tree-select-input-ngmodel.component.css']
 })
-export class MatTreeSelectInputNgmodelComponent implements OnInit {
+export class MatTreeSelectInputNgmodelComponent implements OnInit, OnChanges {
 
 
   @Input() select = ""
@@ -19,6 +19,7 @@ export class MatTreeSelectInputNgmodelComponent implements OnInit {
   @Input() options: TreeData[] = []
   @Input() placeholder = ''
   @Input() multiple = false
+  @Input() heading = ""
 
 
   nestedTreeControl: NestedTreeControl<TreeData>;
@@ -34,7 +35,17 @@ export class MatTreeSelectInputNgmodelComponent implements OnInit {
   ngOnInit(): void {
 
     this.nestedDataSource.data = this.options
+
   }
+
+  ngOnChanges(changes: any): void {
+
+    if (changes.options.currentValue !== changes.options.previousValue) {
+      this.nestedDataSource.data = this.options
+    }
+
+  }
+  
   private _getChildren = (node: TreeData) => observableOf(node.children);
 
   hasNestedChild = (_: number, nodeData: TreeData) => {
