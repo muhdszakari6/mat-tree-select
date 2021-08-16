@@ -176,7 +176,7 @@ export class MatTreeSelectInputComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: any): void {
 
-    if (changes.options.currentValue !== changes.options.previousValue) {
+    if (changes.options?.currentValue !== changes.options?.previousValue) {
       this.nestedDataSource.data = this.options
     }
 

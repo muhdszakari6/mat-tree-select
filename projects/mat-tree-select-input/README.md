@@ -184,21 +184,22 @@ You can modify this method to best suit your use case.
   }
 
 ```
-To implement filter for our mat-tree-select-input you can project an input into the component
+To implement filter for our mat-tree-select-input you can project an input into the component for example
 ```html
+    <ngx-mat-tree-select-input 
+      [options]="options"
+      [placeholder]="' Select Category'"
+      [controlName]="'customTreeSelect'"
+      >
 
-                  <ngx-mat-tree-select-input [options]="options" [placeholder]="' Select Category'"
-                    [controlName]="'customTreeSelect'">
-                    <div class="global_search"
-                      >
+      <input 
+        #searchInput 
+        placeholder="Search" 
+        (keydown)="$event.stopPropagation()"
+        (keyup)="filter(original_options,searchInput.value)"
+      >
 
-                      <input #searchInput placeholder="Search" 
-                        (keydown)="$event.stopPropagation()"
-                        (keyup)="filter(original_options,searchInput.value)">
-
-                    </div>
-
-                  </ngx-mat-tree-select-input>
+    </ngx-mat-tree-select-input>
 
 ```
 
@@ -210,7 +211,6 @@ And then, implement the filter method. for example:
 
    
       if ( object.name.toLowerCase().startsWith(text)) {
-        console.log(text)
 
           result.push(object);
           return result;

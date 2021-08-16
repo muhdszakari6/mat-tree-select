@@ -45,30 +45,6 @@
 
                   <ngx-mat-tree-select-input [options]="tree_options" [placeholder]="' Select Category'"
                     [controlName]="'customTreeSelect'">
-                    <div class="global_search"
-                      style="display: flex; align-items: center; justify-content: space-between; ">
-                      <input placeholder="Search" class="selection-search" (keydown)="$event.stopPropagation()">
-                      <button mat-icon-button matSuffix>
-                        <mat-icon style="font-size: 20px; color: red;">close</mat-icon>
-                      </button>
-                    </div>
-
-                  </ngx-mat-tree-select-input>
-                </div>
-                <label for="customSelect"> mat-tree-select-input with form control and filter</label>
-                <div class="">
-
-
-                  <ngx-mat-tree-select-input [options]="tree_options" [placeholder]="' Select Category'"
-                    [controlName]="'customTreeSelect'">
-                    <div class="global_search"
-                      style="display: flex; align-items: center; justify-content: space-between; ">
-                      <input #searchBrandList placeholder="Search" class="selection-search"
-                        (keydown)="$event.stopPropagation()"
-                        (keyup)="filter(original_tree_options,searchBrandList.value)">
-
-                    </div>
-
                   </ngx-mat-tree-select-input>
                 </div>
 
@@ -80,6 +56,41 @@
                 <label for="">Value:</label>
                 <p>
                   {{firstResult}}
+                </p>
+              </div>
+
+            </div>
+
+          </div>
+          
+          <div *ngIf="showTreeSelect" class="section">
+            <div class="flex">
+
+              <div class="">
+               
+                <label for="customSelect"> mat-tree-select-input with form control and filter</label>
+                <div class="">
+
+
+                  <ngx-mat-tree-select-input [options]="tree_options_filter" [placeholder]="'Select Category'"
+                    [controlName]="'customTreeSelectFiler'">
+
+                      <input #searchBrandList placeholder="Search" class="selection-search"
+                        (keydown)="$event.stopPropagation()"
+                        (keyup)="filter(original_tree_options,searchBrandList.value)">
+
+
+                  </ngx-mat-tree-select-input>
+                </div>
+
+                <button type="submit" color="primary" mat-flat-button>Submit</button>
+              </div>
+
+              <div class="section">
+                <h2>Mat Tree Select Value With Form Control</h2>
+                <label for="">Value:</label>
+                <p>
+                  {{filterResult}}
                 </p>
               </div>
 
@@ -226,6 +237,7 @@
             <div class="">
               <ngx-mat-tree-select-input-ngmodel [multiple]="true" (selectionChanged)="third()" [options]="tree_options"
                 [placeholder]="'Custom Select'" [(select)]="tree_select_value2_multiple">
+
 
               </ngx-mat-tree-select-input-ngmodel>
             </div>

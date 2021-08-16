@@ -12,6 +12,8 @@ export class AppComponent {
   form: FormGroup;
   showTreeSelect: boolean = true
   firstResult = ''
+  filterResult = ''
+
   firstResultMultiple = ''
   secondResult = ''
   secondResultMultiple = ''
@@ -141,6 +143,58 @@ export class AppComponent {
   ]
 
 
+  
+  tree_options_filter: TreeData[] = [
+    {
+      name: 'Electronics',
+      value: 'Electronics',
+      children: [
+        {
+          name: 'Phones',
+          value: 'Phones',
+          children: [
+            {
+              name: 'Iphones',
+              value: 'Iphones',
+              children: []
+
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      name: 'Web Development',
+      value: 'Web Development',
+      children: [
+        {
+          name: 'Frontend Development',
+          value: 'Frontend Development',
+          children: [
+            {
+              name: 'Angular',
+              value: 'Angular',
+              children: []
+
+
+            },
+            {
+              name: 'React',
+              value: 'React',
+              children: []
+
+
+            }
+          ]
+        }
+      ]
+    },
+
+
+  ]
+
+
   tree_select_value = ""
   tree_select_value2 = ""
   tree_select_value_multiple: any;
@@ -152,11 +206,12 @@ export class AppComponent {
     private fb: FormBuilder
   ) {
     this.form = this.fb.group({
-      treedata: [JSON.stringify(this.tree_options), [Validators.required]],
+      treedata: [JSON.stringify(this.tree_options),[Validators.required] ],
 
-      customSelect: ['', [Validators.required]],
-      customTreeSelect: ['', [Validators.required]],
-      customTreeSelectMultiple: ['', [Validators.required]],
+      customSelect: ['', ],
+      customTreeSelect: ['', ],
+      customTreeSelectMultiple: ['', ],
+      customTreeSelectFiler: ['']
 
 
 
@@ -175,10 +230,7 @@ export class AppComponent {
   }
 
   ngOnInit(): void {
-    setTimeout(() => {
-      this.tree_options = [];
-      console.log(this.tree_options)
-    }, 3000);
+
   }
 
   filter(array: TreeData[], text: string) {
@@ -187,7 +239,6 @@ export class AppComponent {
 
    
       if ( object.name.toLowerCase().startsWith(text)) {
-        console.log(text)
 
           result.push(object);
           return result;
@@ -199,7 +250,7 @@ export class AppComponent {
       return result;
     };
 
-    this.tree_options = array.reduce(getNodes, []);
+    this.tree_options_filter = array.reduce(getNodes, []);
   }
 
 
@@ -216,6 +267,8 @@ export class AppComponent {
   onSubmit(form: any) {
     this.firstResult = JSON.stringify(form.value.customTreeSelect)
     this.firstResultMultiple = JSON.stringify(form.value.customTreeSelectMultiple)
+    this.filterResult = JSON.stringify(form.value.customTreeSelectFiler)
   }
+
 }
 
