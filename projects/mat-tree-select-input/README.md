@@ -1,6 +1,7 @@
 # MatTreeSelectInput
 
-An angular material select formfield that allows user to select option from a tree data structure.
+An angular material select formfield that allows user to select option from a tree like structure.
+Similar to Angular mat-select, but the options are provided in a tree like structure.
 
 ## Dependencies
 *  [Angular](https://angular.io/)
@@ -15,6 +16,9 @@ An angular material select formfield that allows user to select option from a tr
 
 ## Demo
  [Demo Application](https://mat-tree-select-input-demo.netlify.app/)
+ ## Example
+![mat-tree-select-input example ](https://res.cloudinary.com/muhdsalim/image/upload/v1631314473/Screenshot_148_innlac.png)
+
 
 ## Installation
 After installing the above dependencies. Install mat-tree-select-input via.
