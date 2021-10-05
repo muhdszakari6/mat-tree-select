@@ -20,7 +20,7 @@
               {{nestedTreeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
             </mat-icon>
           </button>
-          <mat-option style="display: flex;" class="mat-tree-node" [value]="node">
+          <mat-option  [disabled] = "!canSelectParentNode" style="display: flex;" class="mat-tree-node" [value]="node">
 
             {{node.name}}
           </mat-option>

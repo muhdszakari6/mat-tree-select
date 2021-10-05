@@ -40,7 +40,7 @@ export interface TreeData {
                   {{nestedTreeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
                 </mat-icon>
               </button>
-              <mat-option  style="display: flex;" class="mat-tree-node" [value]="node">
+              <mat-option  [disabled] = "!canSelectParentNode" style="display: flex;" class="mat-tree-node" [value]="node">
 
                       {{node.name}}
                     </mat-option>
@@ -156,6 +156,7 @@ export class MatTreeSelectInputComponent implements OnInit, OnChanges {
   @Input() placeholder = ''
   @Input() multiple = false
   @Input() heading = ""
+  @Input() canSelectParentNode = true
 
 
   nestedTreeControl: NestedTreeControl<TreeData>;

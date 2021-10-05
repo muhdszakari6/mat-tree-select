@@ -18,6 +18,8 @@ export class AppComponent {
   secondResult = ''
   secondResultMultiple = ''
   thirdResult = ''
+  categoryNoPResult = ""
+
   thirdResultMultiple = ''
 
 
@@ -200,7 +202,12 @@ export class AppComponent {
   tree_select_value_multiple: any;
   tree_select_value2_multiple: any;
 
+  categoryNoP = ""
+  categoryNoPJson = ""
+  noParentNodeResult: string = "";
 
+
+ 
 
   constructor(
     private fb: FormBuilder
@@ -211,7 +218,8 @@ export class AppComponent {
       customSelect: ['', ],
       customTreeSelect: ['', ],
       customTreeSelectMultiple: ['', ],
-      customTreeSelectFiler: ['']
+      customTreeSelectFiler: [''],
+      categoryNoP: ['']
 
 
 
@@ -232,6 +240,13 @@ export class AppComponent {
   ngOnInit(): void {
 
   }
+
+  onSelectionChanged(){
+    // console.log(this.categoryNoP)
+    this.categoryNoPJson = JSON.stringify(this.categoryNoP)
+
+  }
+  
 
   filter(array: TreeData[], text: string) {
 
@@ -268,6 +283,8 @@ export class AppComponent {
     this.firstResult = JSON.stringify(form.value.customTreeSelect)
     this.firstResultMultiple = JSON.stringify(form.value.customTreeSelectMultiple)
     this.filterResult = JSON.stringify(form.value.customTreeSelectFiler)
+    this.noParentNodeResult = JSON.stringify(form.value.categoryNoP)
+    
   }
 
 }

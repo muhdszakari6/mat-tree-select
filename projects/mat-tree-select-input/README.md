@@ -168,6 +168,7 @@ Hence, a sample option will be
     },
   ]
   ```
+
 Finnaly pass it to any one of the examples(code snippet) above
 
 In cases where your data is not exactly the type of Treedata[], below is a sample method you can use to convert it to a TreeData[].
@@ -205,6 +206,31 @@ To implement filter for our mat-tree-select-input you can project an input into 
 
     </ngx-mat-tree-select-input>
 
+```
+
+To disable the selection of parent nodes, add the property canSelectParentNode and set it to false. For example with ngModel. 
+```html
+  ...
+   <ngx-mat-tree-select-input-ngmodel 
+                    (selectionChanged)="onSelectionChanged()"
+                    [(select)]="value"
+                    [options]="options"
+                    [heading] = "'Sub Categories of'"
+                    [canSelectParentNode] = "false"
+                    [placeholder]="'Select Category'" 
+                    >
+    </ngx-mat-tree-select-input-ngmodel>
+  ...
+```
+or with Reactive Form. 
+```html
+            <ngx-mat-tree-select-input 
+                    [options]="options"
+                    [placeholder]="'Select Category'" 
+                    [heading] = "'Children of'"
+                    [canSelectParentNode] = "false"
+                    [controlName]="'category'">
+            </ngx-mat-tree-select-input>
 ```
 
 And then, implement the filter method. for example:

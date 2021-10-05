@@ -20,6 +20,7 @@ export class MatTreeSelectInputNgmodelComponent implements OnInit, OnChanges {
   @Input() placeholder = ''
   @Input() multiple = false
   @Input() heading = ""
+  @Input() canSelectParentNode = true
 
 
   nestedTreeControl: NestedTreeControl<TreeData>;
