@@ -25,7 +25,7 @@ export interface TreeData {
             <mat-tree class="example-tree mat-tree-position" [dataSource]="nestedDataSource" [treeControl]="nestedTreeControl">
                 <!-- This is the tree node template for leaf nodes -->
                 <mat-tree-node  class="mat-tree-node"  *matTreeNodeDef="let node" >
-                  <mat-option [value]="node">
+                  <mat-option [title] = "node.name" [value]="node">
                     <!-- use a disabled button to provide padding for tree leaf -->
                     <p style="margin-left: 35px;" class="tree_text">  {{node.name}} </p>
                   </mat-option>
@@ -40,7 +40,7 @@ export interface TreeData {
                   {{nestedTreeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
                 </mat-icon>
               </button>
-              <mat-option  [disabled] = "!canSelectParentNode" style="display: flex;" class="mat-tree-node" [value]="node">
+              <mat-option [title] = "node.name"  [disabled] = "!canSelectParentNode" style="display: flex;" class="mat-tree-node" [value]="node">
 
                       {{node.name}}
                     </mat-option>

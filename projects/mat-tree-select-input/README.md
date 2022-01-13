@@ -213,6 +213,27 @@ To implement filter for our mat-tree-select-input you can project an input into 
 
 ```
 
+And then, implement the filter method. for example:
+```typescript
+  filter(array: TreeData[], text: string) {
+
+    const getNodes = (result, object) => {   
+      if ( object.name.toLowerCase().startsWith(text)) {
+          result.push(object);
+          return result;
+      }
+      if (Array.isArray(object.children)) {
+        const children = object.children.reduce(getNodes, []);
+        if (children.length) result.push({ ...object, children });
+      }
+      return result;
+    };
+
+    this.options = array.reduce(getNodes, []);
+  }
+
+```
+
 To disable the selection of parent nodes, add the property canSelectParentNode and set it to false. For example with ngModel. 
 ```html
   ...
@@ -236,25 +257,4 @@ or with Reactive Form.
                     [canSelectParentNode] = "false"
                     [controlName]="'category'">
             </ngx-mat-tree-select-input>
-```
-
-And then, implement the filter method. for example:
-```typescript
-  filter(array: TreeData[], text: string) {
-
-    const getNodes = (result, object) => {   
-      if ( object.name.toLowerCase().startsWith(text)) {
-          result.push(object);
-          return result;
-      }
-      if (Array.isArray(object.children)) {
-        const children = object.children.reduce(getNodes, []);
-        if (children.length) result.push({ ...object, children });
-      }
-      return result;
-    };
-
-    this.options = array.reduce(getNodes, []);
-  }
-
 ```
