@@ -16,6 +16,11 @@ Similar to Angular mat-select, but the options are provided in a tree like struc
 
 ## Demo
  [Demo Application](https://mat-tree-select-input-demo.netlify.app/)
+ 
+  ## Note
+You need to have @angular/material installed in your project, as it is a Peer Dependency.
+
+
  ## Example
 ![mat-tree-select-input example ](https://res.cloudinary.com/muhdsalim/image/upload/v1631314473/Screenshot_148_innlac.png)
 
