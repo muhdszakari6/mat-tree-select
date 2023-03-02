@@ -1,0 +1,16 @@
+.mat-select-tree-hide {
+  display: none;
+}
+.tree-toggle {
+  position: relative;
+}
+.option-wrapper{
+  display:flex;
+}
+.option{
+  flex: 1;
+  width: 100%;
+}
+.heading{
+  margin: 4px 0;
+}

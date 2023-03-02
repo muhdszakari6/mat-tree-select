@@ -1,0 +1,28 @@
+<mat-form-field appearance="outline">
+  <mat-select [id]="controlName" [placeholder]="placeholder" [multiple]="multiple" [formControlName]="controlName">
+    <ng-content></ng-content>
+    <mat-tree class="mat-select-tree" [dataSource]="nestedDataSource" [treeControl]="nestedTreeControl">
+      <mat-tree-node *matTreeNodeDef="let node">
+        <mat-option class="option" [title]="node.name" [value]="node">
+          {{node.name}}
+        </mat-option>
+      </mat-tree-node>
+      <mat-nested-tree-node *matTreeNodeDef="let node; when: hasNestedChild">
+        <div class="option-wrapper">
+          <button class="tree-toggle" mat-icon-button matTreeNodeToggle [attr.aria-label]="'toggle ' + node.name">
+            <mat-icon>
+              {{nestedTreeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+            </mat-icon>
+          </button>
+          <mat-option class="option" [title]="node.name" [disabled]="!canSelectParentNode" [value]="node">
+            {{node.name}}
+          </mat-option>
+        </div>
+        <ul [class.mat-select-tree-hide]="!nestedTreeControl.isExpanded(node)">
+          <span class="heading" *ngIf="heading !== ''"> {{heading + " " + node.name}}</span>
+          <ng-container matTreeNodeOutlet></ng-container>
+        </ul>
+      </mat-nested-tree-node>
+    </mat-tree>
+  </mat-select>
+</mat-form-field>

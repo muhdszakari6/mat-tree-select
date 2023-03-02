@@ -8,9 +8,9 @@ describe('MatTreeSelectInputComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MatTreeSelectInputComponent ]
+      declarations: [MatTreeSelectInputComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
