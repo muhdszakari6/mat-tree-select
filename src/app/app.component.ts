@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { TreeData } from 'mat-tree-select-input';
 
 @Component({
@@ -9,7 +9,7 @@ import { TreeData } from 'mat-tree-select-input';
 })
 export class AppComponent {
   category = ""
-  form: FormGroup;
+  form: UntypedFormGroup;
   showTreeSelect: boolean = true
   firstResult = ''
   filterResult = ''
@@ -210,7 +210,7 @@ export class AppComponent {
  
 
   constructor(
-    private fb: FormBuilder
+    private fb: UntypedFormBuilder
   ) {
     this.form = this.fb.group({
       treedata: [JSON.stringify(this.tree_options),[Validators.required] ],
