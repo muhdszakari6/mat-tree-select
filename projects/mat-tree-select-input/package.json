@@ -14,9 +14,9 @@
   "author": "Salim Zakari",
   "homepage": "https://mat-tree-select-input-demo.netlify.app/",
   "peerDependencies": {
-    "@angular/common": "^12.1.0",
-    "@angular/core": "^12.1.0",
-    "@angular/material": "^12.2.1"
+    "@angular/common": "^15.2.1",
+    "@angular/core": "^15.2.1",
+    "@angular/material": "^15.2.1"
   },
   "dependencies": {
     "tslib": "^2.2.0"
