@@ -3,10 +3,10 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms
 import { TreeData } from 'mat-tree-select-input';
 
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss'],
-    standalone: false
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
+  standalone: false
 })
 export class AppComponent {
   category = ""
@@ -146,7 +146,7 @@ export class AppComponent {
   ]
 
 
-  
+
   tree_options_filter: TreeData[] = [
     {
       name: 'Electronics',
@@ -208,17 +208,17 @@ export class AppComponent {
   noParentNodeResult: string = "";
 
 
- 
+
 
   constructor(
     private fb: UntypedFormBuilder
   ) {
     this.form = this.fb.group({
-      treedata: [JSON.stringify(this.tree_options),[Validators.required] ],
+      treedata: [JSON.stringify(this.tree_options), [Validators.required]],
 
-      customSelect: ['', ],
-      customTreeSelect: ['', ],
-      customTreeSelectMultiple: ['', ],
+      customSelect: ['',],
+      customTreeSelect: ['',],
+      customTreeSelectMultiple: ['',],
       customTreeSelectFiler: [''],
       categoryNoP: ['']
 
@@ -242,22 +242,22 @@ export class AppComponent {
 
   }
 
-  onSelectionChanged(){
+  onSelectionChanged() {
     // console.log(this.categoryNoP)
     this.categoryNoPJson = JSON.stringify(this.categoryNoP)
 
   }
-  
+
 
   filter(array: TreeData[], text: string) {
 
-    const getNodes = (result:any, object:any) => {
+    const getNodes = (result: any, object: any) => {
 
-   
-      if ( object.name.toLowerCase().startsWith(text.toLowerCase())) {
 
-          result.push(object);
-          return result;
+      if (object.name.toLowerCase().startsWith(text.toLowerCase())) {
+
+        result.push(object);
+        return result;
       }
       if (Array.isArray(object.children)) {
         const children = object.children.reduce(getNodes, []);
@@ -268,8 +268,6 @@ export class AppComponent {
 
     this.tree_options_filter = array.reduce(getNodes, []);
   }
-
-
 
   log() {
     this.secondResult = JSON.stringify(this.tree_select_value)
@@ -285,7 +283,7 @@ export class AppComponent {
     this.firstResultMultiple = JSON.stringify(form.value.customTreeSelectMultiple)
     this.filterResult = JSON.stringify(form.value.customTreeSelectFiler)
     this.noParentNodeResult = JSON.stringify(form.value.categoryNoP)
-    
+
   }
 
 }
