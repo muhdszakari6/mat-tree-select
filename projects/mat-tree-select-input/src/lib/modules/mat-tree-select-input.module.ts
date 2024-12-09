@@ -25,8 +25,6 @@ import { MatTreeSelectInputNgmodelComponent } from '../components/mat-tree-selec
     ReactiveFormsModule,
     FormsModule,
     MatButtonModule
-
-
   ],
   exports: [
     MatTreeSelectInputComponent,
