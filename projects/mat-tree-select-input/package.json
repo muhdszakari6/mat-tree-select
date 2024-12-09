@@ -1,6 +1,6 @@
 {
   "name": "mat-tree-select-input",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "description": "An angular material select formfield that allows user to select option from a tree data structure.",
   "keywords": [
     "Angular tree text field",
