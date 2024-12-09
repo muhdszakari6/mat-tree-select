@@ -15,15 +15,16 @@ export interface TreeData {
 }
 
 @Component({
-  selector: 'ngx-mat-tree-select-input',
-  templateUrl: './mat-tree-select-input.component.html',
-  styleUrls: ['./mat-tree-select-input.component.css'],
-  viewProviders: [
-    {
-      provide: ControlContainer,
-      useExisting: FormGroupDirective
-    }
-  ]
+    selector: 'ngx-mat-tree-select-input',
+    templateUrl: './mat-tree-select-input.component.html',
+    styleUrls: ['./mat-tree-select-input.component.css'],
+    viewProviders: [
+        {
+            provide: ControlContainer,
+            useExisting: FormGroupDirective
+        }
+    ],
+    standalone: false
 })
 export class MatTreeSelectInputComponent implements OnInit, OnChanges {
 

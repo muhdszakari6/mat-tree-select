@@ -5,9 +5,10 @@ import { of as observableOf } from 'rxjs';
 import { TreeData } from '../mat-tree-select-input/mat-tree-select-input.component';
 
 @Component({
-  selector: 'ngx-mat-tree-select-input-ngmodel',
-  templateUrl: './mat-tree-select-input-ngmodel.component.html',
-  styleUrls: ['./mat-tree-select-input-ngmodel.component.css']
+    selector: 'ngx-mat-tree-select-input-ngmodel',
+    templateUrl: './mat-tree-select-input-ngmodel.component.html',
+    styleUrls: ['./mat-tree-select-input-ngmodel.component.css'],
+    standalone: false
 })
 export class MatTreeSelectInputNgmodelComponent implements OnInit, OnChanges {
 
