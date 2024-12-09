@@ -215,16 +215,11 @@ export class AppComponent {
   ) {
     this.form = this.fb.group({
       treedata: [JSON.stringify(this.tree_options), [Validators.required]],
-
       customSelect: ['',],
       customTreeSelect: ['',],
       customTreeSelectMultiple: ['',],
       customTreeSelectFiler: [''],
       categoryNoP: ['']
-
-
-
-
     })
 
   }
