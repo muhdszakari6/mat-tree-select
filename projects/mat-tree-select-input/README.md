@@ -13,6 +13,14 @@ Similar to Angular mat-select, but the options are provided in a tree like struc
 * Select multiple tree option 
 * Unlimited tree level 
 * Collapsable trees
+* Built-in search/filter (`[searchable]="true"`)
+* Standalone components, plus the original NgModule
+
+## Compatibility
+| mat-tree-select-input | Angular / Angular Material |
+|---|---|
+| 2.1.x | 19, 20, 21, 22 |
+| 2.0.x | 19 |
 
 ## Demo
  [Demo Application](https://mat-tree-select-input-demo.netlify.app/)
@@ -31,7 +39,23 @@ After installing the above dependencies. Install mat-tree-select-input via.
 npm i mat-tree-select-input
 ```
 
-Once installed you need to import our main module in your application module:
+### Standalone components
+Import the component you need straight into your standalone component:
+```typescript
+import { Component } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatTreeSelectInputComponent, MatTreeSelectInputNgmodelComponent } from 'mat-tree-select-input';
+
+@Component({
+  selector: 'app-root',
+  imports: [ReactiveFormsModule, MatTreeSelectInputComponent, MatTreeSelectInputNgmodelComponent],
+  templateUrl: './app.component.html'
+})
+export class AppComponent {}
+```
+
+### NgModule
+If your app uses NgModules, import the module in your application module:
 ```javascript 
 import { MatTreeSelectInputModule } from 'mat-tree-select-input';
  
@@ -194,6 +218,45 @@ You can modify this method to best suit your use case.
   }
 
 ```
+## Built-in search
+Set `searchable` to show a search box at the top of the dropdown. It works with both components, single and multiple select:
+```html
+    <ngx-mat-tree-select-input
+      [options]="options"
+      [searchable]="true"
+      [searchPlaceholder]="'Search categories'"
+      [placeholder]="'Select Category'"
+      [controlName]="'category'">
+    </ngx-mat-tree-select-input>
+```
+
+| Input | Default | Description |
+|---|---|---|
+| `searchable` | `false` | Shows the search box. |
+| `searchPlaceholder` | `'Search'` | Placeholder (and accessible label) of the search box. |
+| `noResultsText` | `'No results found'` | Shown when nothing matches. |
+| `filterPredicate` | case-insensitive "contains" on `name` | `(node: TreeData, term: string) => boolean` to customise matching. |
+
+How it behaves:
+* A matching node is shown with its parents (expanded automatically) and its children.
+* Selected options stay selected while they are hidden by a search, so in multiple mode you can search, pick, search again and pick more.
+* The search box is focused when the dropdown opens and cleared when it closes.
+
+To match on something other than the name, pass your own predicate:
+```typescript
+import { TreeFilterPredicate } from 'mat-tree-select-input';
+
+matchByValue: TreeFilterPredicate = (node, term) => node.value.toLowerCase().includes(term.toLowerCase());
+```
+```html
+    <ngx-mat-tree-select-input [searchable]="true" [filterPredicate]="matchByValue" ...>
+    </ngx-mat-tree-select-input>
+```
+
+## Custom filter (content projection)
+If you need full control, you can still project your own input into the component instead of using `searchable`.
+Note: this example replaces `options`, so in multiple mode selections that are filtered out are dropped. The built-in search does not have this problem.
+
 To implement filter for our mat-tree-select-input you can project an input into the component for example
 ```html
     <ngx-mat-tree-select-input 
