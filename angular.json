@@ -143,6 +143,55 @@
           }
         }
       }
+    },
+    "demo-standalone": {
+      "projectType": "application",
+      "root": "projects/demo-standalone",
+      "sourceRoot": "projects/demo-standalone/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:application",
+          "options": {
+            "outputPath": {
+              "base": "dist/demo-standalone"
+            },
+            "index": "projects/demo-standalone/src/index.html",
+            "browser": "projects/demo-standalone/src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "projects/demo-standalone/tsconfig.app.json",
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "demo-standalone:build:production"
+            },
+            "development": {
+              "buildTarget": "demo-standalone:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        }
+      }
     }
   }
 }

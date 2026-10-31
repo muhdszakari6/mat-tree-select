@@ -1,29 +1,41 @@
 <mat-form-field appearance="outline">
   <mat-select [placeholder]="placeholder" [multiple]="multiple" (selectionChange)='selectionChanged.emit(select)'
-    [(ngModel)]="select" (ngModelChange)="selectChange.emit(select)">
+    [(ngModel)]="select" (ngModelChange)="selectChange.emit(select)" (openedChange)="onOpenedChange($event)">
+    @if (searchable) {
+      <div class="search">
+        <input #searchInput class="search-input" type="text" autocomplete="off" [placeholder]="searchPlaceholder"
+          [attr.aria-label]="searchPlaceholder" [value]="search.term" (input)="onSearch(searchInput.value)"
+          (keydown)="onSearchKeydown($event)">
+      </div>
+    }
     <ng-content></ng-content>
     <mat-tree class="mat-select-tree" [dataSource]="nestedDataSource" [treeControl]="nestedTreeControl">
-      <mat-tree-node *matTreeNodeDef="let node">
-        <mat-option class="option" [title]="node.name" [value]="node">
+      <mat-nested-tree-node *matTreeNodeDef="let node" [class.mat-select-tree-hide]="search.isHidden(node)">
+        <mat-option class="option" [title]="node.name" [disabled]="search.isHidden(node)" [value]="node">
           {{node.name}}
         </mat-option>
-      </mat-tree-node>
-      <mat-nested-tree-node *matTreeNodeDef="let node; when: hasNestedChild">
+      </mat-nested-tree-node>
+      <mat-nested-tree-node *matTreeNodeDef="let node; when: hasNestedChild" [class.mat-select-tree-hide]="search.isHidden(node)">
         <div class="option-wrapper">
           <button class="tree-toggle" mat-icon-button matTreeNodeToggle [attr.aria-label]="'toggle ' + node.name">
             <mat-icon>
-              {{nestedTreeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+              {{isExpanded(node) ? 'expand_more' : 'chevron_right'}}
             </mat-icon>
           </button>
-          <mat-option class="option" [title]="node.name" [disabled]="!canSelectParentNode" [value]="node">
+          <mat-option class="option" [title]="node.name" [disabled]="!canSelectParentNode || search.isHidden(node)" [value]="node">
             {{node.name}}
           </mat-option>
         </div>
-        <ul [class.mat-select-tree-hide]="!nestedTreeControl.isExpanded(node)">
-          <span *ngIf="heading !== ''" class="heading"> {{heading + " " + node.name}}</span>
+        <ul [class.mat-select-tree-hide]="!isExpanded(node)">
+          @if (heading !== '') {
+            <span class="heading"> {{heading + " " + node.name}}</span>
+          }
           <ng-container matTreeNodeOutlet></ng-container>
         </ul>
       </mat-nested-tree-node>
     </mat-tree>
+    @if (search.hasNoResults) {
+      <div class="no-results">{{noResultsText}}</div>
+    }
   </mat-select>
 </mat-form-field>

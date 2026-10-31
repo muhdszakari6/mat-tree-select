@@ -14,11 +14,15 @@
   "author": "Salim Zakari",
   "homepage": "https://mat-tree-select-input-demo.netlify.app/",
   "peerDependencies": {
-    "@angular/common": "^19.0.3",
-    "@angular/core": "^19.0.3",
-    "@angular/material": "^19.0.2"
+    "@angular/common": "^19.0.0 || ^20.0.0 || ^21.0.0 || ^22.0.0",
+    "@angular/core": "^19.0.0 || ^20.0.0 || ^21.0.0 || ^22.0.0",
+    "@angular/forms": "^19.0.0 || ^20.0.0 || ^21.0.0 || ^22.0.0",
+    "@angular/cdk": "^19.0.0 || ^20.0.0 || ^21.0.0 || ^22.0.0",
+    "@angular/material": "^19.0.0 || ^20.0.0 || ^21.0.0 || ^22.0.0",
+    "rxjs": "^6.5.3 || ^7.4.0"
   },
   "dependencies": {
     "tslib": "^2.2.0"
-  }
+  },
+  "sideEffects": false
 }

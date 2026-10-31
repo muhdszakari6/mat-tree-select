@@ -100,6 +100,32 @@
             <div class="grid">
 
               <div class="">
+                <label for="customSelect"> mat-tree-select-input with built-in search ([searchable]="true")</label>
+                <div class="mat-select-wrappper">
+                  <ngx-mat-tree-select-input [heading]="'Subcategory of'" [options]="tree_options" [searchable]="true"
+                    [placeholder]="'Select Category'" [controlName]="'customTreeSelectSearch'">
+                  </ngx-mat-tree-select-input>
+                </div>
+
+                <button type="submit" color="primary" mat-flat-button>Submit</button>
+              </div>
+
+              <div class="section">
+                <h2>Mat Tree Select Value With Built-in Search</h2>
+                <label for="">Value:</label>
+                <p>
+                  {{searchResult}}
+                </p>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div *ngIf="showTreeSelect" class="section">
+            <div class="grid">
+
+              <div class="">
                 <label for="customSelect"> mat-tree-select-input (multiple) with form control</label>
                 <div class="mat-select-wrappper">
                   <ngx-mat-tree-select-input [heading]="'Subcategory of'" [multiple]="true" [options]="tree_options"

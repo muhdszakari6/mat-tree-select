@@ -14,6 +14,7 @@ export class AppComponent {
   showTreeSelect: boolean = true
   firstResult = ''
   filterResult = ''
+  searchResult = ''
 
   firstResultMultiple = ''
   secondResult = ''
@@ -219,6 +220,7 @@ export class AppComponent {
       customTreeSelect: ['',],
       customTreeSelectMultiple: ['',],
       customTreeSelectFiler: [''],
+      customTreeSelectSearch: [''],
       categoryNoP: ['']
     })
 
@@ -277,6 +279,7 @@ export class AppComponent {
     this.firstResult = JSON.stringify(form.value.customTreeSelect)
     this.firstResultMultiple = JSON.stringify(form.value.customTreeSelectMultiple)
     this.filterResult = JSON.stringify(form.value.customTreeSelectFiler)
+    this.searchResult = JSON.stringify(form.value.customTreeSelectSearch)
     this.noParentNodeResult = JSON.stringify(form.value.categoryNoP)
 
   }
