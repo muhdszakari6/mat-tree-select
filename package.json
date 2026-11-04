@@ -7,6 +7,7 @@
     "start:standalone": "ng serve demo-standalone",
     "build": "ng build mat-tree-select-input && node scripts/copy-package-files.mjs",
     "build:demos": "ng build mat-tree-select && ng build demo-standalone",
+    "build:site": "ng build mat-tree-select-input && ng build mat-tree-select",
     "watch": "ng build mat-tree-select-input --watch --configuration development",
     "test": "ng test mat-tree-select-input",
     "test:ci": "ng test mat-tree-select-input --watch=false --browsers=ChromeHeadless",

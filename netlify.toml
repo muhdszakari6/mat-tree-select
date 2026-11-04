@@ -1,0 +1,5 @@
+# The demo imports mat-tree-select-input from dist/ (see tsconfig.json paths), so the library
+# has to be built before the demo.
+[build]
+  command = "npm run build:site"
+  publish = "dist/mat-tree-select/browser"
