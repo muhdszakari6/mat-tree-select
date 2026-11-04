@@ -31,6 +31,8 @@ const TREE: TreeData[] = [
   `,
   imports: [MatTreeSelectInputNgmodelComponent]
 })
+// `select` is typed as string in 2.x although it holds TreeData, so the host uses `any`.
+/* eslint-disable @typescript-eslint/no-explicit-any */
 class HostComponent {
   options = TREE;
   multiple = false;
@@ -39,6 +41,7 @@ class HostComponent {
   value: any = '';
   selectionChanged: any;
 }
+/* eslint-enable @typescript-eslint/no-explicit-any */
 
 /**
  * Detects changes and waits for async rendering, so tests pass with and without zone.js

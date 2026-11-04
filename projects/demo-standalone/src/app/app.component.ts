@@ -115,6 +115,9 @@ export class AppComponent {
     searchedMany: new FormControl<TreeData[]>([])
   });
 
+  // `select` is typed as string in 2.x although it holds TreeData, so these use `any`.
+  /* eslint-disable @typescript-eslint/no-explicit-any */
   selected: any = '';
   searchedNgModel: any = '';
+  /* eslint-enable @typescript-eslint/no-explicit-any */
 }

@@ -1,5 +1,5 @@
 import { NestedTreeControl } from '@angular/cdk/tree';
-import { ElementRef, OnChanges, ViewChild } from '@angular/core';
+import { ElementRef, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
 import { Component, Input, OnInit } from '@angular/core';
 import { ControlContainer, FormGroupDirective, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -40,6 +40,8 @@ export interface TreeData {
 })
 export class MatTreeSelectInputComponent implements OnInit, OnChanges {
 
+  // Typed `any` for backward compatibility; narrow to `string` in the next major version.
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   @Input() controlName: any = {};
   @Input() options: TreeData[] = []
   @Input() placeholder = ''
@@ -71,7 +73,7 @@ export class MatTreeSelectInputComponent implements OnInit, OnChanges {
 
   }
 
-  ngOnChanges(changes: any): void {
+  ngOnChanges(changes: SimpleChanges): void {
 
     if (changes.options?.currentValue !== changes.options?.previousValue) {
       this.nestedDataSource.data = this.options
