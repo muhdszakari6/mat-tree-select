@@ -72,10 +72,15 @@ Avoid breaking changes where possible. If one is needed, say so clearly in the p
 
 ## Releasing (maintainers)
 
-1. Update the version in `projects/mat-tree-select-input/package.json` and move the "Unreleased" changelog entries under the new version and date.
-2. Run `npm run build`.
-3. Publish from the build output: `cd dist/mat-tree-select-input && npm publish`.
-4. Tag the release (`git tag v2.1.0 && git push --tags`) and create a GitHub release with the changelog notes.
+Releases are published to npm by the [Release workflow](.github/workflows/release.yml) when a GitHub release is published. Pushing commits or tags never publishes.
+
+1. Update the version in `projects/mat-tree-select-input/package.json` and move the "Unreleased" changelog entries under the new version and date. Merge this to `main`.
+2. On GitHub, create a release from `main` with a new tag matching the version (e.g. `v2.1.0`) and paste in the changelog notes. Tick "Set as a pre-release" for versions like `2.2.0-beta.1`; they are published under the `next` dist-tag.
+3. Publishing the release runs the full CI checks, then publishes the package CI built and tested. The workflow fails without publishing if the tag doesn't match the package version.
+
+**One-time setup:** on npmjs.com, open the package's settings, go to *Trusted publishing*, and add a GitHub Actions publisher with repository `muhdszakari6/mat-tree-select` and workflow `release.yml`. No npm token is needed in the repository.
+
+**Manual fallback:** `npm run build`, then `cd dist/mat-tree-select-input && npm publish`. Use `npm run build`, not `ng build`, so the README, LICENSE and CHANGELOG are included.
 
 ## License
 
