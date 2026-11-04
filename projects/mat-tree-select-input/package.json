@@ -1,18 +1,41 @@
 {
   "name": "mat-tree-select-input",
-  "version": "2.0.0",
-  "description": "An angular material select formfield that allows user to select option from a tree data structure.",
+  "version": "2.1.0",
+  "description": "Angular Material tree select: a mat-select form field for hierarchical data, with single/multiple selection, collapsible nodes, built-in search, reactive forms and ngModel support.",
   "keywords": [
-    "Angular tree text field",
-    "Angular Material tree text field",
-    "Material Tree Select",
-    "Angular material tree input",
-    "Angular tree form field",
-    "mat-tree-select-input",
-    "mat-tree-select-field"
+    "angular",
+    "angular-material",
+    "material",
+    "mat-select",
+    "tree-select",
+    "treeselect",
+    "tree",
+    "mat-tree",
+    "hierarchical",
+    "hierarchy",
+    "nested",
+    "dropdown",
+    "select",
+    "multiselect",
+    "form-control",
+    "reactive-forms",
+    "ngmodel",
+    "standalone",
+    "search",
+    "filter",
+    "mat-tree-select-input"
   ],
   "author": "Salim Zakari",
-  "homepage": "https://mat-tree-select-input-demo.netlify.app/",
+  "license": "MIT",
+  "homepage": "https://github.com/muhdszakari6/mat-tree-select#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/muhdszakari6/mat-tree-select.git",
+    "directory": "projects/mat-tree-select-input"
+  },
+  "bugs": {
+    "url": "https://github.com/muhdszakari6/mat-tree-select/issues"
+  },
   "peerDependencies": {
     "@angular/common": "^19.0.0 || ^20.0.0 || ^21.0.0 || ^22.0.0",
     "@angular/core": "^19.0.0 || ^20.0.0 || ^21.0.0 || ^22.0.0",

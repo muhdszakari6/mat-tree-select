@@ -3,10 +3,15 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "start": "ng serve mat-tree-select",
+    "start:standalone": "ng serve demo-standalone",
+    "build": "ng build mat-tree-select-input && node scripts/copy-package-files.mjs",
+    "build:demos": "ng build mat-tree-select && ng build demo-standalone",
+    "build:site": "ng build mat-tree-select-input && ng build mat-tree-select",
+    "watch": "ng build mat-tree-select-input --watch --configuration development",
+    "test": "ng test mat-tree-select-input",
+    "test:ci": "ng test mat-tree-select-input --watch=false --browsers=ChromeHeadless",
+    "lint": "ng lint"
   },
   "private": true,
   "dependencies": {
@@ -20,7 +25,6 @@
     "@angular/platform-browser": "^19.2.25",
     "@angular/platform-browser-dynamic": "^19.2.25",
     "@angular/router": "^19.2.25",
-    "mat-tree-select-input": "^2.0.0",
     "rxjs": "^7.8.0",
     "tslib": "^2.2.0",
     "zone.js": "~0.15.0"
@@ -31,6 +35,8 @@
     "@angular/compiler-cli": "^19.2.25",
     "@types/jasmine": "~4.3.1",
     "@types/node": "^18.14.5",
+    "angular-eslint": "19.8.1",
+    "eslint": "^9.28.0",
     "jasmine-core": "~4.5.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",
@@ -38,6 +44,7 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "^2.0.0",
     "ng-packagr": "^19.2.2",
-    "typescript": "~5.7.3"
+    "typescript": "~5.7.3",
+    "typescript-eslint": "8.33.1"
   }
 }

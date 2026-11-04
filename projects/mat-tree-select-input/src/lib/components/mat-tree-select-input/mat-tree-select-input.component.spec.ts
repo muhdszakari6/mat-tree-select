@@ -46,6 +46,8 @@ class StandaloneHostComponent {
       <ngx-mat-tree-select-input [options]="options" [controlName]="'category'"></ngx-mat-tree-select-input>
     </form>
   `,
+  // Deliberately non-standalone: checks that MatTreeSelectInputModule keeps working.
+  // eslint-disable-next-line @angular-eslint/prefer-standalone
   standalone: false
 })
 class NgModuleHostComponent {

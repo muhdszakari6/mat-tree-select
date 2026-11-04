@@ -141,6 +141,16 @@
             "tsConfig": "projects/mat-tree-select-input/tsconfig.spec.json",
             "karmaConfig": "projects/mat-tree-select-input/karma.conf.js"
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/mat-tree-select-input/**/*.ts",
+              "projects/mat-tree-select-input/**/*.html"
+            ],
+            "eslintConfig": "projects/mat-tree-select-input/eslint.config.js"
+          }
         }
       }
     },
@@ -190,6 +200,16 @@
             }
           },
           "defaultConfiguration": "development"
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/demo-standalone/**/*.ts",
+              "projects/demo-standalone/**/*.html"
+            ],
+            "eslintConfig": "projects/demo-standalone/eslint.config.js"
+          }
         }
       }
     }
